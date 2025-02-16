@@ -7,4 +7,11 @@ BASE_SHA=$(git rev-parse --verify "origin/${GITHUB_BASE_REF}^{commit}")
 # Get the hash of HEAD and ensure its valid
 HEAD_SHA=$(git rev-parse --verify "HEAD^{commit}")
 
-! grep --quiet -E '^(amend|fixup|squash)!' <(git log --pretty=%s "${BASE_SHA}..${HEAD_SHA}")
+
+
+if ! RESULT=$(git log --pretty="%s" "${BASE_SHA}..${HEAD_SHA}"); then
+  echo "${RESULT}"
+  exit 1
+fi
+
+! grep --quiet -E '^(amend|fixup|squash)!' <<< "${RESULT}"
