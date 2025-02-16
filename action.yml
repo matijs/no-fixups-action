@@ -1,4 +1,4 @@
-name: Block autosquash commits
+name: No Fixups
 description: |
   GitHub Action to use in pull requests to check if there are accidental
   commits that should have been autosquashed first.
@@ -9,6 +9,7 @@ inputs:
       Skip the actions/checkout because you are using your own checkout.
       Set `fetch-depth` and `ref` yourself. See below for values.
     default: 'false'
+
 runs:
   using: composite
   steps:
@@ -23,7 +24,7 @@ runs:
 
     - name: Checkout
       if: ${{ inputs.skip-checkout == 'false' }}
-      uses: actions/checkout@v4.1.1
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         fetch-depth: 0
         ref: ${{ github.event.pull_request.head.sha }}
