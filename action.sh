@@ -9,5 +9,7 @@ git log --pretty="%H %s"
 echo "BASE_REF: ${BASE_REF}"
 echo "GITHUB_SHA: ${GITHUB_SHA}"
 echo "GITHUB_REF: ${GITHUB_REF}"
+MY_SHA=git rev-parse "${GITHUB_REF}^{commit}"
+echo "MY_SHA: ${MY_SHA}"
 
 ! grep --quiet -E '^(amend|fixup|squash)!' <(git log --pretty=%s "${BASE_REF}..${GITHUB_SHA}")
