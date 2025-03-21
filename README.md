@@ -1,6 +1,6 @@
 # no-fixups-action
 
-[![CI](https://github.com/matijs/autosquash-blocker-action/actions/workflows/ci.yml/badge.svg)](https://github.com/matijs/autosquash-blocker-action/actions/workflows/ci.yml)
+[![CI](https://github.com/matijs/no-fixups-action/actions/workflows/ci.yml/badge.svg)](https://github.com/matijs/no-fixups-action/actions/workflows/ci.yml)
 
 This action can be used as a blocking status check on pull requests that contain
 commits that should have been auto-squashed.
