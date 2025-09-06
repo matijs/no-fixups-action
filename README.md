@@ -12,8 +12,9 @@ commits that should have been auto-squashed.
   uses: matijs/no-fixups-action@v1
 ```
 
-This action will only run on pull requests and will fail when used on, for
-example, pushes. There is one input. There are no outputs.
+**Note**: This action will only run on `pull request` events and will fail when
+used on, for example, `push` or `schedule`. There is one input. There are no
+outputs.
 
 It is not necessary to use
 [actions/checkout](https://github.com/actions/checkout) first. This action takes
