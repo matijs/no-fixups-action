@@ -15,12 +15,10 @@ runs:
   steps:
     - name: Check if this is a pull request
       if: ${{ github.event_name != 'pull_request' }}
-      run: |
-        echo '### Error' >> ${GITHUB_STEP_SUMMARY}
-        echo '' >> ${GITHUB_STEP_SUMMARY}
-        echo 'This action can only be run on pull requests.' >> ${GITHUB_STEP_SUMMARY}
-        exit 1
       shell: bash
+      run: |
+        echo "::error::This action can only be run on pull_request events."
+        exit 1
 
     - name: Checkout
       if: ${{ inputs.skip-checkout == 'false' }}
@@ -29,15 +27,9 @@ runs:
         fetch-depth: 0
         ref: ${{ github.event.pull_request.head.sha }}
 
-    - name: Set GitHub Action path
-      env:
-        ACTION_PATH: ${{ github.action_path }}
-      run: echo "${ACTION_PATH}" >> ${GITHUB_PATH}
-      shell: bash
-
     - name: Check if there are 'amend!', 'fixup!', and 'squash!' commits
-      run: action.sh
       shell: bash
+      run: ${{ github.action_path }}/action.sh
 
 branding:
   icon: git-commit
