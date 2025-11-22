@@ -7,4 +7,6 @@ updates:
       day: "saturday"
       time: "00:00"
       timezone: "Etc/UTC"
+    cooldowns:
+      default-days: 5
 
